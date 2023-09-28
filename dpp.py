@@ -146,7 +146,7 @@ Focusing on key states, marital status segments, and top occupations can lead to
 """
 
 
-
+st.write(conclusion)
 st.write('------')
 st.markdown('### Created by Vinayak Shukla')
 
