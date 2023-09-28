@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(
     page_icon="💸",
-    page_title="Diwali sales analysis",
+    page_title="Diwali sales analysis ",
     layout="wide")
 
 
 df = pd.read_csv('sales.csv', encoding='unicode_escape')
 
 
-st.title('Diwali Sales Analysis')
+st.title('Diwali Sales Analysis 🪔')
 
 st.write('## Data Summary')
 st.write('Shape of the dataset:', df.shape)
@@ -130,7 +130,7 @@ elif option == 'Top 10 Most Sold Products':
 
 
 st.write('---')
-st.write('### KEY INSIGHTS')
+st.write('### KEY INSIGHTS 🔑🔍')
 conclusion = """
 The Diwali sales analysis highlights several key insights:
 
