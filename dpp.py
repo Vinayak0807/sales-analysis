@@ -8,24 +8,23 @@ st.set_page_config(
     page_title="Diwali sales analysis",
     layout="wide")
 
-# Load your dataset
+
 df = pd.read_csv('sales.csv', encoding='unicode_escape')
 
-# Add Streamlit app title and header
+
 st.title('Diwali Sales Analysis')
 
-# Display data summary
 st.write('## Data Summary')
 st.write('Shape of the dataset:', df.shape)
 st.write(df)
 
-# Add interactive visualizations using Streamlit components
+
 st.write('## Visualizations')
 
-# Ask the user to select an option
+
 st.write('Select an option from the dropdown below to view the corresponding graph:')
 
-# User's choice
+
 option = st.selectbox('Select an option:', [
     'State-wise Orders','Gender Distribution',
     'Age Group Distribution',
@@ -36,7 +35,6 @@ option = st.selectbox('Select an option:', [
     'Top 10 Most Sold Products'
 ])
 
-# Conditional rendering based on the user's choice
 if option == 'Gender Distribution':
     st.subheader('Gender Distribution')
     st.write('This graph shows the distribution of gender among buyers.')
@@ -44,7 +42,7 @@ if option == 'Gender Distribution':
     gender_countplot = sb.countplot(x='Gender', data=df)
     st.pyplot(gender_countplot.get_figure())
     
-    # Conclusion for Gender Distribution
+
     st.write('### Conclusion for Gender Distribution')
     st.write(' Female Dominance: The data indicates a higher representation of female buyers compared to males.')
     st.write(' This suggests a significant female presence in the customer base during the Diwali sales period.')
@@ -56,7 +54,6 @@ elif option == 'Age Group Distribution':
     age_group_countplot = sb.countplot(data=df, x='Age Group', hue='Gender')
     st.pyplot(age_group_countplot.get_figure())
     
-    # Conclusion for Age Group Distribution
     st.write('### Conclusion for Age Group Distribution')
     st.write('The majority of buyers belong to the 26-35 age group, particularly females.')
     st.write('This age group is the most active in terms of making purchases.')
@@ -67,7 +64,7 @@ elif option == 'State-wise Orders':
     state_orders = df.groupby(['State'], as_index=False)['Orders'].sum().sort_values(by='Orders', ascending=False)
     st.bar_chart(state_orders.set_index('State')['Orders'])
     
-    # Conclusion for State-wise Orders
+    
     st.write('### Conclusion for State-wise Orders')
     st.write('Uttar Pradesh, Maharashtra, and Karnataka are the top states in terms of both order quantity and total sales.')
     st.write('These states have a higher market share and contribute significantly to overall sales.')
@@ -79,7 +76,7 @@ elif option == 'State-wise Total Sales/Amount':
     state_sales = df.groupby(['State'], as_index=False)['Amount'].sum().sort_values(by='Amount', ascending=False)
     st.bar_chart(state_sales.set_index('State')['Amount'])
     
-    # Conclusion for State-wise Total Sales/Amount
+    
     st.write('### Conclusion for State-wise Total Sales/Amount')
     st.write('Uttar Pradesh, Maharashtra, and Karnataka are the top states in terms of total sales amount as well.')
     st.write('These states are key contributors to the overall revenue.')
@@ -91,7 +88,7 @@ elif option == 'Marital Status Distribution':
     marital_status_countplot = sb.countplot(data=df, x='Marital_Status')
     st.pyplot(marital_status_countplot.get_figure())
     
-    # Conclusion for Marital Status Distribution
+    
     st.write('### Conclusion for Marital Status Distribution')
     st.write('Most buyers are married, especially women.')
     st.write('Married buyers, particularly married women, make up a substantial portion of the customer base.')
@@ -103,7 +100,7 @@ elif option == 'Marital Status vs. Amount with Gender Hue':
     marital_status_vs_amount = df.groupby(['Marital_Status', 'Gender'], as_index=False)['Amount'].sum().sort_values(by='Amount', ascending=False)
     st.bar_chart(marital_status_vs_amount.set_index('Marital_Status')['Amount'])
     
-    # Conclusion for Marital Status vs. Amount with Gender Hue
+    
     st.write('### Conclusion for Marital Status vs. Amount with Gender Hue')
     st.write('Married individuals, especially women, tend to spend more on purchases.')
 
@@ -114,7 +111,7 @@ elif option == 'Occupation Distribution':
     occupation_countplot = sb.countplot(data=df, x='Occupation')
     st.pyplot(occupation_countplot.get_figure())
     
-    # Conclusion for Occupation Distribution
+  
     st.write('### Conclusion for Occupation Distribution')
     st.write('The top occupations of buyers are in IT, Healthcare, and Aviation sectors.')
     st.write('These sectors have a higher number of buyers, possibly due to higher disposable income.')
@@ -126,12 +123,12 @@ elif option == 'Top 10 Most Sold Products':
     top_10_products = df.groupby(['Product_Category'], as_index=False)['Orders'].sum().sort_values(by='Orders', ascending=False).head(10)
     st.bar_chart(top_10_products.set_index('Product_Category')['Orders'])
     
-    # Conclusion for Top 10 Most Sold Products
+    
     st.write('### Conclusion for Top 10 Most Sold Products')
     st.write('The top-selling products have higher order quantities.')
     st.write('Identifying these products can help in optimizing inventory and marketing efforts.')
 
-# Conclusion section (not conditional)
+
 st.write('---')
 st.write('### KEY INSIGHTS')
 conclusion = """
@@ -148,8 +145,8 @@ These findings underscore the importance of tailoring marketing strategies and p
 Focusing on key states, marital status segments, and top occupations can lead to sustained growth and success in future Diwali sales campaigns.
 """
 
-# Display the conclusion
-st.write(conclusion)
+
+
 st.write('------')
 st.markdown('### Created by Vinayak Shukla')
 
