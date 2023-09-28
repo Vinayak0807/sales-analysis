@@ -19,7 +19,7 @@ st.write('Shape of the dataset:', df.shape)
 st.write(df)
 
 
-st.write('## Visualizations')
+st.write('## Visualizations 📈')
 
 
 st.write('Select an option from the dropdown below to view the corresponding graph:')
