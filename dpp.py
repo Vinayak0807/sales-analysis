@@ -4,7 +4,7 @@ import seaborn as sb
 import matplotlib.pyplot as plt 
 
 st.set_page_config(
-    page_icon="🧊",
+    page_icon="🚀",
     page_title="Diwali sales analysis",
     layout="wide")
 
